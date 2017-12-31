@@ -13,7 +13,7 @@ data_file =  open('tunnels.json', 'r')
 try:
     datajson = json.load(data_file)
     for i in datajson['tunnels']:
-        WEBHOOK_URL = i['public_url']
+        WEBHOOK_URL = i['public_url'] + '/hook'
 finally:
     data_file.close()
 
