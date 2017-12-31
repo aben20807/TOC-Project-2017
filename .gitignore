@@ -1,3 +1,6 @@
+# Sensitive data
+api_token.json
+tunnels.json
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
