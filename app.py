@@ -75,9 +75,6 @@ machine = TocMachine(
         show_conditions=True,
         )
 
-# machine.init_bot(bot)
-
-
 def _set_webhook():
     status = bot.set_webhook(WEBHOOK_URL)
     if not status:
