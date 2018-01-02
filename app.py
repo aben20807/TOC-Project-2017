@@ -13,7 +13,7 @@ data_file =  open('tunnels.json', 'r')
 try:
     datajson = json.load(data_file)
     for i in datajson['tunnels']:
-        WEBHOOK_URL = i['public_url'] + '/hook'
+        FORWARDING_URL = i['public_url']
 finally:
     data_file.close()
 
@@ -25,10 +25,12 @@ try:
 finally:
     token_file.close()
 
+WEBHOOK_URL = FORWARDING_URL + '/hook'
 app = Flask(__name__)
 bot = telegram.Bot(token=API_TOKEN)
 machine = TocMachine(
         bot,
+        FORWARDING_URL,
         states=[
             'user',
             'state1',
@@ -44,8 +46,8 @@ machine = TocMachine(
             {
                 'trigger': 'advance',
                 'source': 'state1',
-                'dest': 'state1',
-                'conditions': 'is_staying_state1'
+                'dest': 'user',
+                'conditions': 'is_leaving_state1'
             },
             {
                 'trigger': 'advance',
@@ -56,8 +58,8 @@ machine = TocMachine(
             {
                 'trigger': 'advance',
                 'source': 'state2',
-                'dest': 'state2',
-                'conditions': 'is_staying_state2'
+                'dest': 'user',
+                'conditions': 'is_leaving_state2'
             },
             {
                 'trigger': 'go_back',
