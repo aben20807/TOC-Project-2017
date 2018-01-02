@@ -1,4 +1,3 @@
-from io import BytesIO
 from transitions.extensions import GraphMachine
 
 class TocMachine(GraphMachine):
@@ -45,6 +44,7 @@ class TocMachine(GraphMachine):
 
     def on_enter_state2(self, update):
         update.message.reply_text("I'm entering state2")
+        update.message.reply_text("I'm repeater!!!!")
 
     def on_exit_state2(self, update):
         update.message.reply_text("Ok QuQ")
