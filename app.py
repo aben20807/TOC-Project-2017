@@ -28,6 +28,7 @@ finally:
 app = Flask(__name__)
 bot = telegram.Bot(token=API_TOKEN)
 machine = TocMachine(
+        bot,
         states=[
             'user',
             'state1',
@@ -59,6 +60,8 @@ machine = TocMachine(
         auto_transitions=False,
         show_conditions=True,
         )
+
+# machine.init_bot(bot)
 
 
 def _set_webhook():

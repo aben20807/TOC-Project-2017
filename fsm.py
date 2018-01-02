@@ -1,8 +1,8 @@
 from transitions.extensions import GraphMachine
 
-
 class TocMachine(GraphMachine):
-    def __init__(self, **machine_configs):
+    def __init__(self, bot, **machine_configs):
+        self.bot = bot
         self.machine = GraphMachine(
             model = self,
             **machine_configs
@@ -18,6 +18,8 @@ class TocMachine(GraphMachine):
 
     def on_enter_state1(self, update):
         update.message.reply_text("I'm entering state1")
+        chat_id = update.message.chat.id
+        self.bot.send_photo(chat_id = chat_id, photo = 'https://imgur.com/VkcGVCj.jpg')
         self.go_back(update)
 
     def on_exit_state1(self, update):
