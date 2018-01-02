@@ -2,6 +2,7 @@ import json
 import os
 import sys
 from io import BytesIO
+import webbrowser
 
 import telegram
 from flask import Flask, request, send_file
@@ -71,8 +72,6 @@ machine = TocMachine(
             {
                 'trigger': 'go_back',
                 'source': [
-                    'state1',
-                    'state2',
                     'state3'
                     ],
                 'dest': 'user'
@@ -109,4 +108,5 @@ def show_fsm():
 
 if __name__ == "__main__":
     _set_webhook()
+    webbrowser.open(FORWARDING_URL + '/show-fsm')
     app.run()

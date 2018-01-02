@@ -1,3 +1,4 @@
+from io import BytesIO
 from transitions.extensions import GraphMachine
 
 class TocMachine(GraphMachine):
@@ -15,8 +16,7 @@ class TocMachine(GraphMachine):
 
     def is_leaving_state1(self, update):
         text = update.message.text
-        update.message.reply_text("Ok QuQ")
-        update.message.reply_text(self.forwarding_url + '/show-fsm')
+        update.message.reply_text("OuO")
         return text.lower() == 'give me fsm'
 
     def is_going_to_state2(self, update):
@@ -25,6 +25,7 @@ class TocMachine(GraphMachine):
 
     def is_leaving_state2(self, update):
         text = update.message.text
+        update.message.reply_text(text)
         return text.lower() == 'go back'
 
     def is_going_to_state3(self, update):
@@ -35,16 +36,18 @@ class TocMachine(GraphMachine):
         self.bot.sendMessage(update.message.chat_id, 'Hello, ' + str(update.message.from_user.first_name))
         update.message.reply_text("I'm entering state1")
         chat_id = update.message.chat.id
-        self.bot.send_photo(chat_id = chat_id, photo = 'https://imgur.com/VkcGVCj.jpg')
+        self.bot.send_photo(chat_id = chat_id, photo = 'https://avatars3.githubusercontent.com/u/14831545?s=460&v=4')
 
     def on_exit_state1(self, update):
+        update.message.reply_text("Ok QuQ")
+        update.message.reply_text(self.forwarding_url + '/show-fsm')
         print('Leaving state1')
 
     def on_enter_state2(self, update):
         update.message.reply_text("I'm entering state2")
-        self.go_back(update)
 
     def on_exit_state2(self, update):
+        update.message.reply_text("Ok QuQ")
         print('Leaving state2')
 
     def on_enter_state3(self, update):
@@ -52,4 +55,5 @@ class TocMachine(GraphMachine):
         self.go_back(update)
 
     def on_exit_state3(self, update):
+        update.message.reply_text("Go back OuO")
         print('Leaving state3')
