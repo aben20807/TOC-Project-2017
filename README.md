@@ -29,7 +29,7 @@ $ python3 app.py
 ## Usage
 Initial state: `user`
 Input `go to state1` then bot go to state1 state in user state.
-In state1, bot will say hello with your first name, and send a photo.
+In state1, bot will say hello with your first name, and send a image.
 Typing any thing in state1 you will always receive `OuO`.
 If you type `give me fsm` bot will send a fsm url and go back user state.
 
@@ -37,12 +37,12 @@ Input `go to state2` then bot go to state2 state in user state.
 In state2, bot will repeat what you type until input `go back`.
 
 Input `go to state3` then bot go to state3 state in user state.
-After entering state3 bot will go back user state immediately.
+After entering state3 bot will send a image and go back user state immediately.
 
 ## Bonus
 + Get WEBHOOK_URL automatically.
 + Keep token in api_token.json not app.py directly.
-+ Can send image.
++ Can send images.
 
 ## Author
 [Lee-W](https://github.com/Lee-W)

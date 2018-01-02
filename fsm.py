@@ -55,5 +55,7 @@ class TocMachine(GraphMachine):
         self.go_back(update)
 
     def on_exit_state3(self, update):
+        chat_id = update.message.chat.id
+        self.bot.send_photo(chat_id = chat_id, photo = 'https://imgur.com/VkcGVCj.jpg')
         update.message.reply_text("Go back OuO")
         print('Leaving state3')
