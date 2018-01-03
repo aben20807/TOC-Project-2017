@@ -37,12 +37,14 @@ Input `go to state2` then bot go to state2 state in user state.
 In state2, bot will repeat what you type until input `go back`.
 
 Input `go to state3` then bot go to state3 state in user state.
-After entering state3 bot will send a image and go back user state immediately.
+In state2, bot will send .mp3 about what you type until input `go back`.
 
 ## Bonus
 + Get WEBHOOK_URL automatically.
++ Open fsm in browser automatically.
 + Keep token in api_token.json not app.py directly.
 + Can send images.
++ Can send mp3 according to user typing.
 
 ## Author
 [Lee-W](https://github.com/Lee-W)
