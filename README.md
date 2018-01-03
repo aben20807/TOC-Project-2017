@@ -27,6 +27,7 @@ $ python3 app.py
 ![fsm](./img/show-fsm.png)
 
 ## Usage
+Total 5 states, `user`, `state1` ~ `state4`
 Initial state: `user`
 Input `go to state1` then bot go to state1 state in user state.
 In state1, bot will say hello with your first name, and send a image.
@@ -37,7 +38,11 @@ Input `go to state2` then bot go to state2 state in user state.
 In state2, bot will repeat what you type until input `go back`.
 
 Input `go to state3` then bot go to state3 state in user state.
-In state2, bot will send .mp3 about what you type until input `go back`.
+In state3, bot will send .mp3 about what you type until input `go back`.
+
+Input `go to state4` then bot go to state4 state in user state.
+In state4, bot will give class schedule time about what you type(chinese class name).
+Go back user state when typing `go back`.
 
 ## Bonus
 + Get WEBHOOK_URL automatically.
@@ -45,6 +50,7 @@ In state2, bot will send .mp3 about what you type until input `go back`.
 + Keep token in api_token.json not app.py directly.
 + Can send images.
 + Can send mp3 according to user typing.
++ Can parse website data.
 
 ## Author
 [Lee-W](https://github.com/Lee-W)
