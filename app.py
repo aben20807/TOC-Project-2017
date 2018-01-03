@@ -70,11 +70,10 @@ machine = TocMachine(
                 'conditions': 'is_going_to_state3'
             },
             {
-                'trigger': 'go_back',
-                'source': [
-                    'state3'
-                    ],
-                'dest': 'user'
+                'trigger': 'advance',
+                'source': 'state3',
+                'dest': 'user',
+                'conditions': 'is_leaving_state3'
             }
         ],
         initial='user',

@@ -1,4 +1,5 @@
 from transitions.extensions import GraphMachine
+from gtts import gTTS
 
 class TocMachine(GraphMachine):
     def __init__(self, bot, forwarding_url, **machine_configs):
@@ -27,6 +28,14 @@ class TocMachine(GraphMachine):
         update.message.reply_text(text)
         return text.lower() == 'go back'
 
+    def is_leaving_state3(self, update):
+        text = update.message.text
+        tts = gTTS(text=text, lang='en')
+        tts.save("audio/{}.mp3".format(text))
+        chat_id = update.message.chat.id
+        self.bot.send_audio(chat_id=chat_id, audio=open('audio/{}.mp3'.format(text), 'rb'))
+        return text.lower() == 'go back'
+
     def is_going_to_state3(self, update):
         text = update.message.text
         return text.lower() == 'go to state3'
@@ -52,7 +61,7 @@ class TocMachine(GraphMachine):
 
     def on_enter_state3(self, update):
         update.message.reply_text("I'm entering state3")
-        self.go_back(update)
+        update.message.reply_text("I'm speaker!!!!")
 
     def on_exit_state3(self, update):
         chat_id = update.message.chat.id
